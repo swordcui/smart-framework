@@ -48,6 +48,12 @@ public final class ConfigHelper {
         public static String getAppJspPath() {
                 return PropsUtil.getString(CONFIG_PROPS,ConfigConstant.APP_JSP_PATH,"/WEB-INF/view/");
         }
+    /**
+     * 获取静态资源路径
+     */
+        public static String getAppAssetPath() {
+                return PropsUtil.getString(CONFIG_PROPS,ConfigConstant.APP_ASSET_PATH,"/asset/");
+        }
 
 
 }
