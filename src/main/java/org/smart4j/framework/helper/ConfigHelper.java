@@ -1,4 +1,4 @@
-package org.smart4j.helper;
+package org.smart4j.framework.helper;
 
 import java.util.Properties;
 import org.smart4j.framework.ConfigConstant;
