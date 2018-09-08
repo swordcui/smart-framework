@@ -17,6 +17,41 @@ public final class ReflectionUtil {
      */
     public static Object newInstance(Class<?> cls) {
         Object instance;
-        
+        try {
+            instance =cls.newInstance();
+        }catch (Exception e ) {
+            LOGGER.error("new instance failure" , e);
+            throw new RuntimeException(e);
+        }
+        return instance;
     }
+
+    /**
+     * 调用方法
+     */
+     public static Object invokeMethod(Object obj ,Method method ,Object... args) {
+         Object result;
+         try {
+             //取消安全检查，访问速度可以得到很大提高
+             method.setAccessible(true);
+             result = method.invoke(obj , args);
+         }catch (Exception e ) {
+             LOGGER.error("invoke method failure" ,e );
+             throw new RuntimeException(e);
+         }
+         return result;
+     }
+
+    /**
+     * 设置成员变量的值
+     */
+     public static void setField(Object obj , Field field ,Object value) {
+         try{
+             field.setAccessible(true);
+             field.set(obj,value);
+         }catch (Exception e) {
+             LOGGER.error("set field failure" ,e );
+             throw new RuntimeException(e);
+         }
+     }
 }
